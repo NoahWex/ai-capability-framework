@@ -1,0 +1,1798 @@
+<project_management_framework version="1.0">
+  <!-- Core Project Management Structure -->
+  <core_tags>
+    <tag name="assess">
+      <purpose>Evaluate current project state and needs</purpose>
+      <required_elements>
+        - Project status summary
+        - Key accomplishments to date
+        - Current challenges and blockers
+        - Resource assessment
+      </required_elements>
+      <style_guidelines>
+        - Objective current state description
+        - Evidence-based status reporting
+        - Clear identification of critical issues
+        - Balanced view of progress and challenges
+      </style_guidelines>
+      <attributes>
+        scope="sprint|milestone|project"
+        focus="technical|resource|timeline|quality"
+      </attributes>
+      <mcp_integration>
+        - knowledge_graph.read_graph to review existing project context
+        - github.list_commits to evaluate recent progress
+        - github.list_issues to assess outstanding work
+      </mcp_integration>
+    </tag>
+    
+    <tag name="prioritize">
+      <purpose>Rank and select work items based on strategic value</purpose>
+      <required_elements>
+        - Selection criteria definition
+        - Task/feature categorization
+        - Impact vs. effort assessment
+        - Dependencies identification
+      </required_elements>
+      <style_guidelines>
+        - Clear prioritization rationale
+        - Numerical ranking where appropriate
+        - Strategic alignment justification
+        - Consideration of both urgency and importance
+      </style_guidelines>
+      <attributes>
+        timeframe="immediate|sprint|roadmap"
+        approach="value-based|risk-based|cost-based|hybrid"
+      </attributes>
+      <mcp_integration>
+        - sequential_thinking for ranking logic
+        - github.list_issues to review existing work items
+        - knowledge_graph.create_relations to map dependencies
+      </mcp_integration>
+    </tag>
+    
+    <tag name="scope">
+      <purpose>Define boundaries and deliverables for work increment</purpose>
+      <required_elements>
+        - Clear objectives statement
+        - Specific deliverables list
+        - Explicit inclusion/exclusion criteria
+        - Acceptance criteria
+      </required_elements>
+      <style_guidelines>
+        - Precise, unambiguous language
+        - Measurable outcomes
+        - Manageable chunk sizing
+        - Complete sentence structure for clarity
+      </style_guidelines>
+      <attributes>
+        size="task|story|epic|feature"
+        type="enhancement|bugfix|research|refactor"
+      </attributes>
+      <mcp_integration>
+        - github.create_issue for task definition
+        - knowledge_graph.add_observations for context
+        - sequential_thinking for breaking down complex scope
+      </mcp_integration>
+    </tag>
+    
+    <tag name="implement">
+      <purpose>Execute planned work with appropriate approach</purpose>
+      <required_elements>
+        - Implementation strategy
+        - Task breakdown
+        - Technical approach
+        - Quality assurance measures
+      </required_elements>
+      <style_guidelines>
+        - Methodical step sequencing
+        - Technical precision in descriptions
+        - Progress indicators
+        - Decision point identification
+      </style_guidelines>
+      <attributes>
+        approach="incremental|experimental|comprehensive"
+        collaboration="solo|paired|team"
+      </attributes>
+      <mcp_integration>
+        - github.create_or_update_file for implementation
+        - sequential_thinking for implementation planning
+        - knowledge_graph.create_entities for component tracking
+      </mcp_integration>
+    </tag>
+    
+    <tag name="review">
+      <purpose>Evaluate work quality and completion</purpose>
+      <required_elements>
+        - Completion verification against requirements
+        - Quality assessment
+        - Improvement recommendations
+        - Learning capture
+      </required_elements>
+      <style_guidelines>
+        - Constructive tone
+        - Specific examples for feedback
+        - Clear differentiation of must-fix vs. suggestions
+        - Recognition of strengths
+      </style_guidelines>
+      <attributes>
+        depth="quick|standard|thorough"
+        aspect="code|design|usability|documentation"
+      </attributes>
+      <mcp_integration>
+        - github.get_file_contents to review implementations
+        - knowledge_graph.read_graph to verify against requirements
+        - brave_web_search for best practice comparison
+      </mcp_integration>
+    </tag>
+    
+    <tag name="iterate">
+      <purpose>Plan improvements based on experience and feedback</purpose>
+      <required_elements>
+        - Learnings from current iteration
+        - Specific improvement targets
+        - Adaptation strategies
+        - Success metrics for next iteration
+      </required_elements>
+      <style_guidelines>
+        - Forward-looking perspective
+        - Concrete, actionable improvements
+        - Connection to project goals
+        - Clear progression path
+      </style_guidelines>
+      <attributes>
+        focus="process|technical|quality|scope"
+        magnitude="minor|significant|major"
+      </attributes>
+      <mcp_integration>
+        - sequential_thinking for improvement planning
+        - knowledge_graph.add_observations to document learnings
+        - github.update_issue for task refinement
+      </mcp_integration>
+    </tag>
+  </core_tags>
+
+  <!-- Project Tracking Templates -->
+  <tracking_templates>
+    <template id="sprint_planning">
+      <structure>
+        <section name="sprint_goals">
+          <format>
+            <heading>Sprint Goals</heading>
+            <content>
+              <goal_list type="bullet">
+                <goal priority="high">Primary objective with measurable outcome</goal>
+                <goal priority="medium">Secondary objective with measurable outcome</goal>
+                <goal priority="low">Stretch objective if time permits</goal>
+              </goal_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="task_breakdown">
+          <format>
+            <heading>Task Breakdown</heading>
+            <content>
+              <task_table>
+                <columns>
+                  <column>Task</column>
+                  <column>Estimation</column>
+                  <column>Assigned To</column>
+                  <column>Dependencies</column>
+                  <column>Priority</column>
+                </columns>
+                <tasks>
+                  <task id="unique_identifier">
+                    <description>Clear task description</description>
+                    <estimate unit="hours">Numeric estimate</estimate>
+                    <assignee>Responsible person/role</assignee>
+                    <dependencies>List of dependent task IDs</dependencies>
+                    <priority>High/Medium/Low</priority>
+                  </task>
+                  <!-- Additional tasks follow same pattern -->
+                </tasks>
+              </task_table>
+            </content>
+          </format>
+        </section>
+        
+        <section name="success_criteria">
+          <format>
+            <heading>Success Criteria</heading>
+            <content>
+              <criteria_list type="numbered">
+                <criterion>Specific, measurable success indicator</criterion>
+                <!-- Additional criteria follow same pattern -->
+              </criteria_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="risks_and_mitigations">
+          <format>
+            <heading>Risks and Mitigations</heading>
+            <content>
+              <risk_table>
+                <columns>
+                  <column>Risk</column>
+                  <column>Impact</column>
+                  <column>Likelihood</column>
+                  <column>Mitigation Strategy</column>
+                </columns>
+                <risks>
+                  <risk id="risk_identifier">
+                    <description>Risk description</description>
+                    <impact>High/Medium/Low</impact>
+                    <likelihood>High/Medium/Low</likelihood>
+                    <mitigation>Specific mitigation approach</mitigation>
+                  </risk>
+                  <!-- Additional risks follow same pattern -->
+                </risks>
+              </risk_table>
+            </content>
+          </format>
+        </section>
+      </structure>
+    </template>
+
+    <template id="progress_report">
+      <structure>
+        <section name="status_summary">
+          <format>
+            <heading>Status Summary</heading>
+            <content>
+              <status_indicators>
+                <overall status="on-track|at-risk|blocked">Brief overall status</overall>
+                <schedule status="ahead|on-schedule|behind">Schedule status with context</schedule>
+                <scope status="complete|partial|at-risk">Scope status with context</scope>
+                <quality status="excellent|acceptable|needs-work">Quality assessment</quality>
+              </status_indicators>
+              <summary_text>Concise paragraph summarizing current state</summary_text>
+            </content>
+          </format>
+        </section>
+        
+        <section name="milestone_progress">
+          <format>
+            <heading>Milestone Progress</heading>
+            <content>
+              <milestone_table>
+                <columns>
+                  <column>Milestone</column>
+                  <column>Due Date</column>
+                  <column>Status</column>
+                  <column>Completion %</column>
+                  <column>Notes</column>
+                </columns>
+                <milestones>
+                  <milestone id="milestone_identifier">
+                    <description>Milestone description</description>
+                    <due_date>YYYY-MM-DD</due_date>
+                    <status>Complete/In Progress/Not Started/Blocked</status>
+                    <completion_percentage>0-100</completion_percentage>
+                    <notes>Relevant context or blockers</notes>
+                  </milestone>
+                  <!-- Additional milestones follow same pattern -->
+                </milestones>
+              </milestone_table>
+            </content>
+          </format>
+        </section>
+        
+        <section name="achievements">
+          <format>
+            <heading>Key Achievements</heading>
+            <content>
+              <achievement_list type="bullet">
+                <achievement>Specific accomplishment with impact</achievement>
+                <!-- Additional achievements follow same pattern -->
+              </achievement_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="issues_and_actions">
+          <format>
+            <heading>Issues and Actions</heading>
+            <content>
+              <issue_table>
+                <columns>
+                  <column>Issue</column>
+                  <column>Impact</column>
+                  <column>Owner</column>
+                  <column>Action</column>
+                  <column>Due Date</column>
+                </columns>
+                <issues>
+                  <issue id="issue_identifier">
+                    <description>Issue description</description>
+                    <impact>High/Medium/Low</impact>
+                    <owner>Responsible person/role</owner>
+                    <action>Specific action to resolve</action>
+                    <due_date>YYYY-MM-DD</due_date>
+                  </issue>
+                  <!-- Additional issues follow same pattern -->
+                </issues>
+              </issue_table>
+            </content>
+          </format>
+        </section>
+        
+        <section name="next_steps">
+          <format>
+            <heading>Next Steps</heading>
+            <content>
+              <step_list type="numbered">
+                <step priority="high">Immediate next action</step>
+                <!-- Additional steps follow same pattern -->
+              </step_list>
+            </content>
+          </format>
+        </section>
+      </structure>
+    </template>
+    
+    <template id="retrospective">
+      <structure>
+        <section name="summary">
+          <format>
+            <heading>Retrospective Summary</heading>
+            <content>
+              <summary_text>Brief overview of the work period being reviewed</summary_text>
+              <metrics_summary>
+                <metric name="completion_rate">Percentage of planned work completed</metric>
+                <metric name="quality_issues">Number of quality issues identified</metric>
+                <metric name="velocity">Rate of work completion</metric>
+              </metrics_summary>
+            </content>
+          </format>
+        </section>
+        
+        <section name="what_went_well">
+          <format>
+            <heading>What Went Well</heading>
+            <content>
+              <positive_list type="bullet">
+                <item>Specific positive outcome or practice</item>
+                <!-- Additional items follow same pattern -->
+              </positive_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="what_could_improve">
+          <format>
+            <heading>What Could Improve</heading>
+            <content>
+              <improvement_list type="bullet">
+                <item>Specific area for improvement</item>
+                <!-- Additional items follow same pattern -->
+              </improvement_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="action_items">
+          <format>
+            <heading>Action Items</heading>
+            <content>
+              <action_table>
+                <columns>
+                  <column>Action</column>
+                  <column>Owner</column>
+                  <column>Due Date</column>
+                  <column>Success Measure</column>
+                </columns>
+                <actions>
+                  <action id="action_identifier">
+                    <description>Specific, actionable improvement</description>
+                    <owner>Responsible person/role</owner>
+                    <due_date>YYYY-MM-DD</due_date>
+                    <success_measure>How we'll know this was successful</success_measure>
+                  </action>
+                  <!-- Additional actions follow same pattern -->
+                </actions>
+              </action_table>
+            </content>
+          </format>
+        </section>
+        
+        <section name="learnings">
+          <format>
+            <heading>Key Learnings</heading>
+            <content>
+              <learning_list type="bullet">
+                <learning category="technical|process|collaboration">Specific insight gained</learning>
+                <!-- Additional learnings follow same pattern -->
+              </learning_list>
+            </content>
+          </format>
+        </section>
+      </structure>
+    </template>
+  </tracking_templates>
+
+  <!-- Work Item Patterns -->
+  <work_item_patterns>
+    <pattern id="feature_development">
+      <phases>
+        <phase id="specification" required="true">
+          <activities>
+            <activity>Requirements gathering</activity>
+            <activity>User story creation</activity>
+            <activity>Acceptance criteria definition</activity>
+            <activity>Technical approach planning</activity>
+          </activities>
+          <deliverables>
+            <deliverable>User story document</deliverable>
+            <deliverable>Technical specification</deliverable>
+            <deliverable>Acceptance test plan</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>assess</tag>
+            <tag>scope</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="implementation" required="true">
+          <activities>
+            <activity>Component development</activity>
+            <activity>Interface integration</activity>
+            <activity>Unit testing</activity>
+            <activity>Documentation</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Code implementation</deliverable>
+            <deliverable>Unit tests</deliverable>
+            <deliverable>Component documentation</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>implement</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="verification" required="true">
+          <activities>
+            <activity>Code review</activity>
+            <activity>Integration testing</activity>
+            <activity>Acceptance testing</activity>
+            <activity>Documentation review</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Code review feedback</deliverable>
+            <deliverable>Test results</deliverable>
+            <deliverable>Documentation updates</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>review</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="refinement" required="false">
+          <activities>
+            <activity>Addressing review feedback</activity>
+            <activity>Performance optimization</activity>
+            <activity>Edge case handling</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Updated implementation</deliverable>
+            <deliverable>Performance metrics</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>implement</tag>
+            <tag>iterate</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="completion" required="true">
+          <activities>
+            <activity>Final verification</activity>
+            <activity>Release preparation</activity>
+            <activity>Knowledge sharing</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Release candidate</deliverable>
+            <deliverable>Knowledge sharing documentation</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>review</tag>
+            <tag>iterate</tag>
+          </recommended_tags>
+        </phase>
+      </phases>
+    </pattern>
+    
+    <pattern id="research_exploration">
+      <phases>
+        <phase id="problem_definition" required="true">
+          <activities>
+            <activity>Problem space exploration</activity>
+            <activity>Research question formulation</activity>
+            <activity>Success criteria definition</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Research brief</deliverable>
+            <deliverable>Research questions document</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>assess</tag>
+            <tag>scope</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="information_gathering" required="true">
+          <activities>
+            <activity>Literature review</activity>
+            <activity>Existing solution analysis</activity>
+            <activity>Expert consultation</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Research findings</deliverable>
+            <deliverable>Reference collection</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>implement</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="analysis" required="true">
+          <activities>
+            <activity>Pattern identification</activity>
+            <activity>Options comparison</activity>
+            <activity>Pros and cons analysis</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Analysis document</deliverable>
+            <deliverable>Options comparison matrix</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>review</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="experimentation" required="false">
+          <activities>
+            <activity>Prototype development</activity>
+            <activity>Concept testing</activity>
+            <activity>Results measurement</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Experimental prototype</deliverable>
+            <deliverable>Test results</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>implement</tag>
+            <tag>review</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="conclusion" required="true">
+          <activities>
+            <activity>Findings synthesis</activity>
+            <activity>Recommendation development</activity>
+            <activity>Next steps planning</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Research report</deliverable>
+            <deliverable>Recommendations document</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>review</tag>
+            <tag>iterate</tag>
+          </recommended_tags>
+        </phase>
+      </phases>
+    </pattern>
+    
+    <pattern id="framework_enhancement">
+      <phases>
+        <phase id="gap_analysis" required="true">
+          <activities>
+            <activity>Current framework evaluation</activity>
+            <activity>User needs assessment</activity>
+            <activity>Gap identification</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Gap analysis report</deliverable>
+            <deliverable>Enhancement opportunities list</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>assess</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="prioritization" required="true">
+          <activities>
+            <activity>Impact assessment</activity>
+            <activity>Effort estimation</activity>
+            <activity>Enhancement ranking</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Prioritized enhancement list</deliverable>
+            <deliverable>Implementation roadmap</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>prioritize</tag>
+            <tag>scope</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="design" required="true">
+          <activities>
+            <activity>Enhancement specification</activity>
+            <activity>Integration planning</activity>
+            <activity>Backward compatibility assessment</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Enhancement design document</deliverable>
+            <deliverable>Integration specifications</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>scope</tag>
+            <tag>implement</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="implementation" required="true">
+          <activities>
+            <activity>Framework component development</activity>
+            <activity>Documentation updates</activity>
+            <activity>Integration testing</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Enhanced framework components</deliverable>
+            <deliverable>Updated documentation</deliverable>
+            <deliverable>Test results</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>implement</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="validation" required="true">
+          <activities>
+            <activity>Framework testing</activity>
+            <activity>Usage examples creation</activity>
+            <activity>Use case validation</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Validation report</deliverable>
+            <deliverable>Usage examples</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>review</tag>
+          </recommended_tags>
+        </phase>
+        
+        <phase id="release" required="true">
+          <activities>
+            <activity>Documentation finalization</activity>
+            <activity>Version update</activity>
+            <activity>Release notes creation</activity>
+          </activities>
+          <deliverables>
+            <deliverable>Release package</deliverable>
+            <deliverable>Release notes</deliverable>
+          </deliverables>
+          <recommended_tags>
+            <tag>review</tag>
+            <tag>iterate</tag>
+          </recommended_tags>
+        </phase>
+      </phases>
+    </pattern>
+  </work_item_patterns>
+
+  <!-- Project Context Management -->
+  <context_management>
+    <project_context_model>
+      <entity_types>
+        <entity_type id="Project">
+          <attributes>
+            <attribute name="name" type="string" required="true" />
+            <attribute name="description" type="string" required="true" />
+            <attribute name="startDate" type="date" required="true" />
+            <attribute name="targetEndDate" type="date" required="false" />
+            <attribute name="status" type="enum" values="planning,active,onHold,completed" required="true" />
+            <attribute name="version" type="string" required="true" />
+          </attributes>
+        </entity_type>
+        
+        <entity_type id="Milestone">
+          <attributes>
+            <attribute name="name" type="string" required="true" />
+            <attribute name="description" type="string" required="true" />
+            <attribute name="targetDate" type="date" required="true" />
+            <attribute name="status" type="enum" values="notStarted,inProgress,completed,blocked" required="true" />
+            <attribute name="completionPercentage" type="integer" required="true" />
+            <attribute name="priority" type="enum" values="high,medium,low" required="true" />
+          </attributes>
+        </entity_type>
+        
+        <entity_type id="WorkItem">
+          <attributes>
+            <attribute name="title" type="string" required="true" />
+            <attribute name="description" type="string" required="true" />
+            <attribute name="type" type="enum" values="feature,bugfix,enhancement,research,documentation" required="true" />
+            <attribute name="status" type="enum" values="backlog,ready,inProgress,review,done" required="true" />
+            <attribute name="priority" type="enum" values="critical,high,medium,low" required="true" />
+            <attribute name="estimation" type="float" required="false" />
+            <attribute name="assignee" type="string" required="false" />
+            <attribute name="createdDate" type="date" required="true" />
+            <attribute name="dueDate" type="date" required="false" />
+          </attributes>
+        </entity_type>
+        
+        <entity_type id="Deliverable">
+          <attributes>
+            <attribute name="name" type="string" required="true" />
+            <attribute name="description" type="string" required="true" />
+            <attribute name="type" type="enum" values="document,code,design,data,presentation" required="true" />
+            <attribute name="status" type="enum" values="notStarted,inProgress,readyForReview,completed" required="true" />
+            <attribute name="location" type="string" required="false" />
+            <attribute name="version" type="string" required="false" />
+            <attribute name="lastUpdated" type="date" required="true" />
+          </attributes>
+        </entity_type>
+        
+        <entity_type id="Risk">
+          <attributes>
+            <attribute name="title" type="string" required="true" />
+            <attribute name="description" type="string" required="true" />
+            <attribute name="impact" type="enum" values="high,medium,low" required="true" />
+            <attribute name="likelihood" type="enum" values="high,medium,low" required="true" />
+            <attribute name="status" type="enum" values="identified,mitigated,resolved,materialized" required="true" />
+            <attribute name="mitigation" type="string" required="true" />
+            <attribute name="owner" type="string" required="false" />
+          </attributes>
+        </entity_type>
+        
+        <entity_type id="Dependency">
+          <attributes>
+            <attribute name="description" type="string" required="true" />
+            <attribute name="type" type="enum" values="finishToStart,startToStart,finishToFinish,startToFinish" required="true" />
+            <attribute name="status" type="enum" values="pending,satisfied,blocked" required="true" />
+            <attribute name="criticality" type="enum" values="high,medium,low" required="true" />
+          </attributes>
+        </entity_type>
+      </entity_types>
+      
+      <relation_types>
+        <relation_type id="contains" from="Project" to="Milestone" />
+        <relation_type id="contains" from="Milestone" to="WorkItem" />
+        <relation_type id="produces" from="WorkItem" to="Deliverable" />
+        <relation_type id="dependsOn" from="WorkItem" to="WorkItem" />
+        <relation_type id="hasRisk" from="Project" to="Risk" />
+        <relation_type id="hasRisk" from="Milestone" to="Risk" />
+        <relation_type id="hasRisk" from="WorkItem" to="Risk" />
+        <relation_type id="hasDependency" from="WorkItem" to="Dependency" />
+        <relation_type id="mitigates" from="WorkItem" to="Risk" />
+      </relation_types>
+    </project_context_model>
+    
+    <knowledge_graph_implementation>
+      <initialization>
+        <entity_creation>
+          <!-- Project entity creation example -->
+          <sample_code>
+            await createEntities({
+              entities: [{
+                name: "AI_Capability_Framework",
+                entityType: "Project",
+                observations: [
+                  "Name: AI Capability Framework",
+                  "Description: Framework for optimizing AI assistance capabilities",
+                  "StartDate: 2025-02-26",
+                  "Status: active",
+                  "Version: 1.0"
+                ]
+              }]
+            });
+          </sample_code>
+        </entity_creation>
+        
+        <milestone_setup>
+          <sample_code>
+            await createEntities({
+              entities: [{
+                name: "Milestone_Initial_Framework_Structure",
+                entityType: "Milestone",
+                observations: [
+                  "Name: Initial Framework Structure",
+                  "Description: Establish core structure and organization of the framework",
+                  "TargetDate: 2025-03-15",
+                  "Status: inProgress",
+                  "CompletionPercentage: 60",
+                  "Priority: high"
+                ]
+              }]
+            });
+            
+            await createRelations({
+              relations: [{
+                from: "AI_Capability_Framework",
+                to: "Milestone_Initial_Framework_Structure",
+                relationType: "contains"
+              }]
+            });
+          </sample_code>
+        </milestone_setup>
+      </initialization>
+      
+      <work_tracking>
+        <work_item_management>
+          <sample_code>
+            // Create work item
+            await createEntities({
+              entities: [{
+                name: "WorkItem_Temporal_Tracking_System",
+                entityType: "WorkItem",
+                observations: [
+                  "Title: Implement Temporal Tracking System",
+                  "Description: Create a system for tracking knowledge evolution over time",
+                  "Type: feature",
+                  "Status: inProgress",
+                  "Priority: high",
+                  "Estimation: 8.0",
+                  "Assignee: Lead Developer",
+                  "CreatedDate: 2025-02-26",
+                  "DueDate: 2025-03-10"
+                ]
+              }]
+            });
+            
+            // Link to milestone
+            await createRelations({
+              relations: [{
+                from: "Milestone_Initial_Framework_Structure",
+                to: "WorkItem_Temporal_Tracking_System",
+                relationType: "contains"
+              }]
+            });
+            
+            // Add dependency
+            await createEntities({
+              entities: [{
+                name: "Dependency_Knowledge_Model_First",
+                entityType: "Dependency",
+                observations: [
+                  "Description: Knowledge Model must be defined before Temporal Tracking",
+                  "Type: finishToStart",
+                  "Status: satisfied",
+                  "Criticality: high"
+                ]
+              }]
+            });
+            
+            await createRelations({
+              relations: [{
+                from: "WorkItem_Temporal_Tracking_System",
+                to: "Dependency_Knowledge_Model_First",
+                relationType: "hasDependency"
+              }]
+            });
+          </sample_code>
+        </work_item_management>
+        
+        <status_updates>
+          <sample_code>
+            // Update work item status
+            await addObservations({
+              observations: [{
+                entityName: "WorkItem_Temporal_Tracking_System",
+                contents: [
+                  "Status: review",
+                  "CompletionPercentage: 90",
+                  "LastUpdated: 2025-03-05",
+                  "ProgressNote: Implementation complete, awaiting code review"
+                ]
+              }]
+            });
+            
+            // Add deliverable
+            await createEntities({
+              entities: [{
+                name: "Deliverable_Temporal_Tracking_Module",
+                entityType: "Deliverable",
+                observations: [
+                  "Name: Temporal Tracking Module",
+                  "Description: Core implementation of temporal tracking system",
+                  "Type: code",
+                  "Status: readyForReview",
+                  "Location: core/temporal-tracking/",
+                  "Version: 0.9",
+                  "LastUpdated: 2025-03-05"
+                ]
+              }]
+            });
+            
+            await createRelations({
+              relations: [{
+                from: "WorkItem_Temporal_Tracking_System",
+                to: "Deliverable_Temporal_Tracking_Module",
+                relationType: "produces"
+              }]
+            });
+          </sample_code>
+        </status_updates>
+      </work_tracking>
+      
+      <progress_monitoring>
+        <milestone_progress>
+          <sample_code>
+            // Update milestone progress
+            await addObservations({
+              observations: [{
+                entityName: "Milestone_Initial_Framework_Structure",
+                contents: [
+                  "CompletionPercentage: 75",
+                  "LastUpdated: 2025-03-05",
+                  "ProgressNote: Core modules implemented, integration testing in progress"
+                ]
+              }]
+            });
+          </sample_code>
+        </milestone_progress>
+        
+        <risk_tracking>
+          <sample_code>
+            // Add project risk
+            await createEntities({
+              entities: [{
+                name: "Risk_Integration_Complexity",
+                entityType: "Risk",
+                observations: [
+                  "Title: Integration Complexity",
+                  "Description: Components may be difficult to integrate cohesively",
+                  "Impact: high",
+                  "Likelihood: medium",
+                  "Status: identified",
+                  "Mitigation: Create detailed integration tests and specifications early",
+                  "Owner: System Architect"
+                ]
+              }]
+            });
+            
+            await createRelations({
+              relations: [{
+                from: "AI_Capability_Framework",
+                to: "Risk_Integration_Complexity",
+                relationType: "hasRisk"
+              }]
+            });
+            
+            // Create mitigation work item
+            await createEntities({
+              entities: [{
+                name: "WorkItem_Integration_Test_Suite",
+                entityType: "WorkItem",
+                observations: [
+                  "Title: Develop Integration Test Suite",
+                  "Description: Create comprehensive tests for component integration",
+                  "Type: enhancement",
+                  "Status: ready",
+                  "Priority: high",
+                  "Estimation: 5.0",
+                  "CreatedDate: 2025-03-05",
+                  "DueDate: 2025-03-12"
+                ]
+              }]
+            });
+            
+            await createRelations({
+              relations: [{
+                from: "WorkItem_Integration_Test_Suite",
+                to: "Risk_Integration_Complexity",
+                relationType: "mitigates"
+              }]
+            });
+          </sample_code>
+        </risk_tracking>
+      </progress_monitoring>
+    </knowledge_graph_implementation>
+    
+    <context_queries>
+      <project_status_query>
+        <description>Query for current project status overview</description>
+        <sample_code>
+          const projectStatus = await readGraph();
+          
+          // Extract project entity
+          const project = projectStatus.entities.find(e => 
+            e.entityType === "Project"
+          );
+          
+          // Get all milestones
+          const milestones = projectStatus.entities.filter(e => 
+            e.entityType === "Milestone"
+          );
+          
+          // Get milestone-project relations
+          const milestoneRelations = projectStatus.relations.filter(r => 
+            r.from === project.name && r.relationType === "contains"
+          );
+          
+          // Get project milestones with completion status
+          const projectMilestones = milestoneRelations.map(relation => {
+            const milestone = milestones.find(m => m.name === relation.to);
+            return {
+              name: getMilestoneNameFromObservations(milestone.observations),
+              status: getMilestoneStatusFromObservations(milestone.observations),
+              completion: getMilestoneCompletionFromObservations(milestone.observations)
+            };
+          });
+          
+          // Get all risks
+          const risks = projectStatus.entities.filter(e => 
+            e.entityType === "Risk"
+          );
+          
+          // Get project risks
+          const projectRiskRelations = projectStatus.relations.filter(r => 
+            r.from === project.name && r.relationType === "hasRisk"
+          );
+          
+          const projectRisks = projectRiskRelations.map(relation => {
+            const risk = risks.find(r => r.name === relation.to);
+            return {
+              title: getRiskTitleFromObservations(risk.observations),
+              impact: getRiskImpactFromObservations(risk.observations),
+              likelihood: getRiskLikelihoodFromObservations(risk.observations),
+              status: getRiskStatusFromObservations(risk.observations)
+            };
+          });
+          
+          return {
+            projectName: getProjectNameFromObservations(project.observations),
+            projectStatus: getProjectStatusFromObservations(project.observations),
+            milestones: projectMilestones,
+            risks: projectRisks
+          };
+        </sample_code>
+      </project_status_query>
+      
+      <work_item_query>
+        <description>Query for work items by status</description>
+        <sample_code>
+          async function getWorkItemsByStatus(status) {
+            const graph = await readGraph();
+            
+            // Get work items with specified status
+            const workItems = graph.entities.filter(e => 
+              e.entityType === "WorkItem" && 
+              e.observations.some(o => o.includes(`Status: ${status}`))
+            );
+            
+            return workItems.map(item => ({
+              name: item.name,
+              title: getWorkItemTitleFromObservations(item.observations),
+              priority: getWorkItemPriorityFromObservations(item.observations),
+              assignee: getWorkItemAssigneeFromObservations(item.observations),
+              dueDate: getWorkItemDueDateFromObservations(item.observations)
+            }));
+          }
+        </sample_code>
+      </work_item_query>
+      
+      <dependency_analysis>
+        <description>Analyze work item dependencies</description>
+        <sample_code>
+          async function analyzeDependencies() {
+            const graph = await readGraph();
+            
+            // Get all work items
+            const workItems = graph.entities.filter(e => 
+              e.entityType === "WorkItem"
+            );
+            
+            // Get direct dependencies between work items
+            const directDependencies = graph.relations.filter(r => 
+              r.relationType === "dependsOn"
+            );
+            
+            // Build dependency map
+            const dependencyMap = directDependencies.reduce((map, dep) => {
+              if (!map[dep.from]) {
+                map[dep.from] = [];
+              }
+              map[dep.from].push(dep.to);
+              return map;
+            }, {});
+            
+            // Identify critical path items (work items with most dependents)
+            const dependentCounts = {};
+            for (const from in dependencyMap) {
+              for (const to of dependencyMap[from]) {
+                dependentCounts[to] = (dependentCounts[to] || 0) + 1;
+              }
+            }
+            
+            const criticalItems = Object.keys(dependentCounts)
+              .sort((a, b) => dependentCounts[b] - dependentCounts[a])
+              .slice(0, 5);
+            
+            return {
+              criticalItems,
+              dependencyMap
+            };
+          }
+        </sample_code>
+      </dependency_analysis>
+    </context_queries>
+  </context_management>
+
+  <!-- Quality Assurance Framework -->
+  <quality_assurance>
+    <review_checklists>
+      <checklist id="code_implementation">
+        <criteria>
+          <criterion id="functionality">
+            <description>Implementation meets functional requirements</description>
+            <questions>
+              <question>Does the implementation satisfy all requirements?</question>
+              <question>Are all edge cases handled appropriately?</question>
+              <question>Does the implementation gracefully handle errors?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="structure">
+            <description>Code is well-structured and follows design patterns</description>
+            <questions>
+              <question>Is the code organized logically with clear separation of concerns?</question>
+              <question>Are appropriate design patterns applied consistently?</question>
+              <question>Is the code modular and reusable?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="readability">
+            <description>Code is clear, readable, and maintainable</description>
+            <questions>
+              <question>Are naming conventions consistent and descriptive?</question>
+              <question>Is complex logic adequately commented?</question>
+              <question>Is the code free of unnecessary complexity?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="performance">
+            <description>Implementation is efficient and performant</description>
+            <questions>
+              <question>Are appropriate algorithms and data structures used?</question>
+              <question>Are there any obvious performance bottlenecks?</question>
+              <question>Is resource usage (memory, processing) optimized?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="testing">
+            <description>Code has appropriate test coverage</description>
+            <questions>
+              <question>Are there unit tests for critical functionality?</question>
+              <question>Do tests cover both expected and edge cases?</question>
+              <question>Are tests clear and maintainable?</question>
+            </questions>
+          </criterion>
+        </criteria>
+      </checklist>
+      
+      <checklist id="documentation">
+        <criteria>
+          <criterion id="completeness">
+            <description>Documentation covers all necessary aspects</description>
+            <questions>
+              <question>Are all components and features documented?</question>
+              <question>Are prerequisites and dependencies clearly stated?</question>
+              <question>Are limitations and constraints documented?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="clarity">
+            <description>Documentation is clear and understandable</description>
+            <questions>
+              <question>Is the language precise and unambiguous?</question>
+              <question>Are examples provided for complex concepts?</question>
+              <question>Is the structure logical and navigable?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="accuracy">
+            <description>Documentation accurately reflects implementation</description>
+            <questions>
+              <question>Are all interfaces and parameters accurately described?</question>
+              <question>Do examples match the current implementation?</question>
+              <question>Are version differences clearly noted?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="usability">
+            <description>Documentation is practical and usable</description>
+            <questions>
+              <question>Are common use cases clearly illustrated?</question>
+              <question>Is there a quick start or getting started guide?</question>
+              <question>Is troubleshooting information provided?</question>
+            </questions>
+          </criterion>
+        </criteria>
+      </checklist>
+      
+      <checklist id="design">
+        <criteria>
+          <criterion id="requirements_alignment">
+            <description>Design satisfies all requirements</description>
+            <questions>
+              <question>Does the design address all functional requirements?</question>
+              <question>Does the design account for non-functional requirements?</question>
+              <question>Are design decisions traceable to requirements?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="architecture">
+            <description>Architecture is sound and appropriate</description>
+            <questions>
+              <question>Is the architecture appropriate for the problem domain?</question>
+              <question>Are components clearly defined with appropriate boundaries?</question>
+              <question>Are interfaces between components clearly specified?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="flexibility">
+            <description>Design accommodates future changes</description>
+            <questions>
+              <question>Can the design accommodate likely future requirements?</question>
+              <question>Are extension points clearly identified?</question>
+              <question>Are coupling and cohesion appropriately balanced?</question>
+            </questions>
+          </criterion>
+          
+          <criterion id="consistency">
+            <description>Design is consistent with existing patterns</description>
+            <questions>
+              <question>Does the design follow established patterns and conventions?</question>
+              <question>Is terminology consistent with the rest of the system?</question>
+              <question>Are similar problems solved in similar ways?</question>
+            </questions>
+          </criterion>
+        </criteria>
+      </checklist>
+    </review_checklists>
+    
+    <acceptance_criteria_templates>
+      <template id="feature_acceptance">
+        <format>
+          <section name="functional_requirements">
+            <format>
+              <heading>Functional Requirements</heading>
+              <content>
+                <requirement_list type="numbered">
+                  <requirement id="unique_id">
+                    <description>Specific, measurable acceptance criterion</description>
+                    <verification_method>How this will be verified (test, demo, inspection)</verification_method>
+                  </requirement>
+                  <!-- Additional requirements follow same pattern -->
+                </requirement_list>
+              </content>
+            </format>
+          </section>
+          
+          <section name="quality_requirements">
+            <format>
+              <heading>Quality Requirements</heading>
+              <content>
+                <requirement_list type="numbered">
+                  <requirement id="unique_id">
+                    <description>Specific quality or non-functional requirement</description>
+                    <verification_method>How this will be verified</verification_method>
+                    <threshold>Measurable threshold for acceptance</threshold>
+                  </requirement>
+                  <!-- Additional requirements follow same pattern -->
+                </requirement_list>
+              </content>
+            </format>
+          </section>
+          
+          <section name="constraints">
+            <format>
+              <heading>Constraints and Limitations</heading>
+              <content>
+                <constraint_list type="bullet">
+                  <constraint>Specific constraint that must be satisfied</constraint>
+                  <!-- Additional constraints follow same pattern -->
+                </constraint_list>
+              </content>
+            </format>
+          </section>
+          
+          <section name="testing_scenarios">
+            <format>
+              <heading>Testing Scenarios</heading>
+              <content>
+                <scenario_list type="numbered">
+                  <scenario id="unique_id">
+                    <description>Scenario description</description>
+                    <steps>
+                      <step>First step in scenario</step>
+                      <step>Second step in scenario</step>
+                      <!-- Additional steps follow same pattern -->
+                    </steps>
+                    <expected_result>Clear description of expected result</expected_result>
+                  </scenario>
+                  <!-- Additional scenarios follow same pattern -->
+                </scenario_list>
+              </content>
+            </format>
+          </section>
+        </format>
+      </template>
+    </acceptance_criteria_templates>
+    
+    <defect_management>
+      <defect_template>
+        <structure>
+          <field name="title">
+            <description>Clear, concise summary of the issue</description>
+            <format>{component}: {brief issue description}</format>
+          </field>
+          
+          <field name="description">
+            <description>Detailed explanation of the issue</description>
+            <format>
+              **Problem Description:**
+              {Detailed description of the issue encountered}
+              
+              **Expected Behavior:**
+              {What should happen under correct operation}
+              
+              **Actual Behavior:**
+              {What actually happens when the issue occurs}
+              
+              **Steps to Reproduce:**
+              1. {First step}
+              2. {Second step}
+              ...
+              
+              **Environment:**
+              - Version: {version}
+              - Environment: {environment details}
+            </format>
+          </field>
+          
+          <field name="severity">
+            <description>How serious the impact of the issue is</description>
+            <values>
+              <value>Critical</value>
+              <value>Major</value>
+              <value>Moderate</value>
+              <value>Minor</value>
+              <value>Cosmetic</value>
+            </values>
+          </field>
+          
+          <field name="priority">
+            <description>How urgently the issue needs to be fixed</description>
+            <values>
+              <value>Immediate</value>
+              <value>High</value>
+              <value>Medium</value>
+              <value>Low</value>
+              <value>Future</value>
+            </values>
+          </field>
+        </structure>
+      </defect_template>
+      
+      <triage_process>
+        <steps>
+          <step order="1">
+            <name>Initial Review</name>
+            <actions>
+              <action>Validate issue is reproducible</action>
+              <action>Assess severity and priority</action>
+              <action>Assign to appropriate component</action>
+            </actions>
+          </step>
+          
+          <step order="2">
+            <name>Impact Assessment</name>
+            <actions>
+              <action>Determine scope of impact</action>
+              <action>Identify affected components</action>
+              <action>Determine if workaround exists</action>
+            </actions>
+          </step>
+          
+          <step order="3">
+            <name>Resolution Planning</name>
+            <actions>
+              <action>Assign to appropriate milestone</action>
+              <action>Determine target fix version</action>
+              <action>Assign to owner</action>
+            </actions>
+          </step>
+        </steps>
+      </triage_process>
+      
+      <resolution_workflow>
+        <states>
+          <state id="open">
+            <description>Issue has been reported but not yet addressed</description>
+            <transitions>
+              <transition to="inProgress">Issue assigned and work begun</transition>
+              <transition to="duplicate">Issue identified as duplicate</transition>
+              <transition to="wontFix">Decision made not to fix</transition>
+              <transition to="cannotReproduce">Issue cannot be reproduced</transition>
+            </transitions>
+          </state>
+          
+          <state id="inProgress">
+            <description>Issue is being actively worked on</description>
+            <transitions>
+              <transition to="readyForReview">Fix implemented and ready for review</transition>
+              <transition to="needsInformation">More information needed to proceed</transition>
+              <transition to="blocked">Progress blocked by dependency</transition>
+            </transitions>
+          </state>
+          
+          <state id="readyForReview">
+            <description>Fix is implemented and ready for review</description>
+            <transitions>
+              <transition to="verified">Fix verified as working</transition>
+              <transition to="inProgress">Review found issues requiring more work</transition>
+            </transitions>
+          </state>
+          
+          <state id="verified">
+            <description>Fix has been verified as working</description>
+            <transitions>
+              <transition to="closed">Issue formally closed</transition>
+              <transition to="reopened">Issue recurs after verification</transition>
+            </transitions>
+          </state>
+          
+          <state id="closed">
+            <description>Issue is resolved and closed</description>
+            <transitions>
+              <transition to="reopened">Issue recurs after closing</transition>
+            </transitions>
+          </state>
+        </states>
+      </resolution_workflow>
+    </defect_management>
+  </quality_assurance>
+
+  <!-- Release Management -->
+  <release_management>
+    <versioning_scheme>
+      <scheme>
+        <pattern>major.minor.patch</pattern>
+        <rules>
+          <rule level="major">
+            <description>Increment for backward-incompatible changes</description>
+            <examples>
+              <example>API changes that break compatibility</example>
+              <example>Significant architectural changes</example>
+              <example>Major feature additions that change core behavior</example>
+            </examples>
+          </rule>
+          
+          <rule level="minor">
+            <description>Increment for backward-compatible feature additions</description>
+            <examples>
+              <example>New capabilities with backward compatibility</example>
+              <example>Significant enhancements to existing features</example>
+              <example>Deprecation of features (but not removal)</example>
+            </examples>
+          </rule>
+          
+          <rule level="patch">
+            <description>Increment for backward-compatible bug fixes</description>
+            <examples>
+              <example>Bug fixes without feature changes</example>
+              <example>Performance improvements</example>
+              <example>Documentation updates</example>
+            </examples>
+          </rule>
+        </rules>
+      </scheme>
+    </versioning_scheme>
+    
+    <release_checklist>
+      <section name="pre_release">
+        <items>
+          <item>All acceptance criteria for included features are satisfied</item>
+          <item>All critical and major defects are resolved</item>
+          <item>Documentation is updated to reflect changes</item>
+          <item>Tests pass with adequate coverage</item>
+          <item>Performance benchmarks meet targets</item>
+          <item>Release notes are prepared</item>
+          <item>Version numbers are updated</item>
+          <item>Backward compatibility validated (if applicable)</item>
+        </items>
+      </section>
+      
+      <section name="release">
+        <items>
+          <item>Code is merged to release branch</item>
+          <item>Release candidate is created</item>
+          <item>Final verification tests passed</item>
+          <item>Release artifacts are generated</item>
+          <item>Release is tagged in version control</item>
+          <item>Release notes are published</item>
+        </items>
+      </section>
+      
+      <section name="post_release">
+        <items>
+          <item>Deployment verification completed</item>
+          <item>Relevant stakeholders notified</item>
+          <item>Documentation site updated</item>
+          <item>Support team briefed on changes</item>
+          <item>Feedback mechanisms in place</item>
+          <item>Post-release monitoring established</item>
+        </items>
+      </section>
+    </release_checklist>
+    
+    <release_note_template>
+      <structure>
+        <section name="overview">
+          <format>
+            <heading>Release Overview</heading>
+            <content>
+              <version>Version {major}.{minor}.{patch}</version>
+              <release_date>Released: {YYYY-MM-DD}</release_date>
+              <summary>
+                Brief paragraph summarizing the key improvements in this release.
+              </summary>
+            </content>
+          </format>
+        </section>
+        
+        <section name="new_features">
+          <format>
+            <heading>New Features</heading>
+            <content>
+              <feature_list type="bullet">
+                <feature>
+                  <title>Feature Name</title>
+                  <description>Detailed description of the feature and its benefits</description>
+                </feature>
+                <!-- Additional features follow same pattern -->
+              </feature_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="enhancements">
+          <format>
+            <heading>Enhancements</heading>
+            <content>
+              <enhancement_list type="bullet">
+                <enhancement>
+                  <title>Enhancement Name</title>
+                  <description>Description of the enhancement</description>
+                </enhancement>
+                <!-- Additional enhancements follow same pattern -->
+              </enhancement_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="bug_fixes">
+          <format>
+            <heading>Bug Fixes</heading>
+            <content>
+              <fix_list type="bullet">
+                <fix>
+                  <issue_id>Issue ID</issue_id>
+                  <description>Description of the fix</description>
+                </fix>
+                <!-- Additional fixes follow same pattern -->
+              </fix_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="breaking_changes">
+          <format>
+            <heading>Breaking Changes</heading>
+            <content>
+              <breaking_list type="bullet">
+                <breaking>
+                  <title>Change Description</title>
+                  <description>Details of the breaking change</description>
+                  <migration>Guidance for migrating to the new approach</migration>
+                </breaking>
+                <!-- Additional breaking changes follow same pattern -->
+              </breaking_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="deprecations">
+          <format>
+            <heading>Deprecations</heading>
+            <content>
+              <deprecation_list type="bullet">
+                <deprecation>
+                  <title>Deprecated Feature</title>
+                  <description>Details of what is being deprecated</description>
+                  <alternative>Recommended alternative approach</alternative>
+                  <timeline>When it will be removed</timeline>
+                </deprecation>
+                <!-- Additional deprecations follow same pattern -->
+              </deprecation_list>
+            </content>
+          </format>
+        </section>
+        
+        <section name="known_issues">
+          <format>
+            <heading>Known Issues</heading>
+            <content>
+              <issue_list type="bullet">
+                <issue>
+                  <description>Description of known issue</description>
+                  <workaround>Workaround if available</workaround>
+                  <planned_fix>When a fix is planned</planned_fix>
+                </issue>
+                <!-- Additional issues follow same pattern -->
+              </issue_list>
+            </content>
+          </format>
+        </section>
+      </structure>
+    </release_note_template>
+  </release_management>
+
+  <!-- Documentation Framework -->
+  <documentation_framework>
+    <document_types>
+      <type id="technical_specification">
+        <structure>
+          <section name="overview">
+            <required>true</required>
+            <elements>
+              <element name="purpose">Clear statement of document purpose</element>
+              <element name="scope">What is and isn't covered</element>
+              <element name="audience">Intended readers</element>
+              <element name="references">Related documents</element>
+              <element name="terminology">Key terms and definitions</element>
+            </elements>
+          </section>
+          
+          <section name="requirements">
+            <required>true</required>
+            <elements>
+              <element name="functional_requirements">What the system must do</element>
+              <element name="non_functional_requirements">Constraints and quality attributes</element>
+              <element name="assumptions">Underlying assumptions</element>
+              <element name="dependencies">External dependencies</element>
+            </elements>
+          </section>
+          
+          <section name="architecture">
+            <required>true</required>
+            <elements>
+              <element name="high_level_design">Architectural overview</element>
+              <element name="components">Component descriptions</element>
+              <element name="interfaces">Interface specifications</element>
+              <element name="data_model">Data structures and relationships</element>
+            </elements>
+          </section>
+          
+          <section name="implementation">
+            <required>false</required>
+            <elements>
+              <element name="approach">Implementation strategy</element>
+              <element name="algorithms">Key algorithms and logic</element>
+              <element name="technologies">Technologies and frameworks</element>
+              <element name="patterns">Design patterns used</element>
+            </elements>
+          </section>
+          
+          <section name="validation">
+            <required>true</required>
+            <elements>
+              <element name="testing_approach">How the implementation will be tested</element>
+              <element name="acceptance_criteria">Criteria for acceptance</element>
+              <element name="performance_metrics">Performance requirements and metrics</element>
+            </elements>
+          </section>
+        </structure>
+      </type>
+      
+      <type id="user_guide">
+        <structure>
+          <section name="introduction">
+            <required>true</required>
+            <elements>
+              <element name="purpose">Purpose of the system/feature</element>
+              <element name="audience">Intended users</element>
+              <element name="scope">What is covered in the guide</element>
+              <element name="prerequisites">Required knowledge or setup</element>
+            </elements>
+          </section>
+          
+          <section name="getting_started">
+            <required>true</required>
+            <elements>
+              <element name="setup">Initial setup instructions</element>
+              <element name="quick_start">Simple example to get started</element>
+            </elements>
+          </section>
+          
+          <section name="features">
+            <required>true</required>
+            <elements>
+              <element name="feature_overview">List of features</element>
+              <element name="detailed_usage">Step-by-step usage instructions</element>
+              <element name="examples">Usage examples</element>
+            </elements>
+          </section>
+          
+          <section name="advanced_usage">
+            <required>false</required>
+            <elements>
+              <element name="advanced_features">Complex usage scenarios</element>
+              <element name="customization">Customization options</element>
+              <element name="integration">Integration with other systems</element>
+            </elements>
+          </section>
+          
+          <section name="troubleshooting">
+            <required>true</required>
+            <elements>
+              <element name="common_issues">Frequently encountered problems</element>
+              <element name="solutions">Solutions and workarounds</element>
+              <element name="support">How to get additional help</element>
+            </elements>
+          </section>
+        </structure>
+      </type>
+    </document_types>
+    
+    <documentation_best_practices>
+      <practice id="clarity">
+        <description>Write clearly and concisely</description>
+        <guidelines>
+          <guideline>Use simple, direct language</guideline>
+          <guideline>Define technical terms before using them</guideline>
+          <guideline>Use active voice when possible</guideline>
+          <guideline>Break complex concepts into smaller pieces</guideline>
+          <guideline>Use consistent terminology throughout</guideline>
+        </guidelines>
+      </practice>
+      
+      <practice id="structure">
+        <description>Organize content logically</description>
+        <guidelines>
+          <guideline>Use clear, descriptive headings</guideline>
+          <guideline>Progress from general to specific information</guideline>
+          <guideline>Group related information together</guideline>
+          <guideline>Use lists and tables for easy scanning</guideline>
+          <guideline>Include a table of contents for longer documents</guideline>
+        </guidelines>
+      </practice>
+      
+      <practice id="examples">
+        <description>Provide meaningful examples</description>
+        <guidelines>
+          <guideline>Include examples for complex concepts</guideline>
+          <guideline>Use realistic scenarios relevant to users</guideline>
+          <guideline>Show both correct usage and common mistakes</guideline>
+          <guideline>Explain the context and purpose of each example</guideline>
+          <guideline>Use consistent formatting for all examples</guideline>
+        </guidelines>
+      </practice>
+      
+      <practice id="maintenance">
+        <description>Plan for documentation maintenance</description>
+        <guidelines>
+          <guideline>Include version information and dates</guideline>
+          <guideline>Maintain documentation alongside code changes</guideline>
+          <guideline>Review documentation regularly for accuracy</guideline>
+          <guideline>Establish a process for user feedback</guideline>
+          <guideline>Archive outdated versions appropriately</guideline>
+        </guidelines>
+      </practice>
+    </documentation_best_practices>
+  </documentation_framework>
+</project_management_framework>
