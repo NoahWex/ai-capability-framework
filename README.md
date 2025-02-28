@@ -73,6 +73,16 @@ The [Knowledge Modeling Quick Guide](./core/knowledge/knowledge-modeling-quick-g
 - Integrating knowledge with analytical processes
 - Modeling domain-specific knowledge structures
 
+### Style Guide Integration System
+
+The [Style Guide Integration System](./core/integration/style-guide-integration-system.md) coordinates multiple style guides with:
+
+- A distributed protocol approach for framework coordination
+- Clear patterns for transitioning between different style guides
+- Guidelines for selecting the appropriate style for different problems
+- Context preservation mechanisms when switching styles
+- Hybrid approaches that combine elements from multiple style guides
+
 ## 🔄 Evolution Philosophy
 
 This framework is designed to be continuously revised and improved. It follows these principles:
@@ -96,6 +106,7 @@ All components in this repository implement standardized temporal tracking to:
 
 The true power of AI assistance comes from effectively combining capabilities. This repository includes:
 
+- **Style Guide Integration**: Coordinating between different analytical approaches
 - **Workflow Templates**: Predefined sequences for common assistance scenarios
 - **Integration Patterns**: Best practices for combining multiple capabilities
 - **Cross-Reference System**: Methods for maintaining coherence across capabilities
@@ -122,6 +133,7 @@ This is a living repository that will continuously evolve based on:
 
 - [Adaptive Analysis Framework](./core/analysis/adaptive-analysis-framework.md)
 - [Knowledge Modeling Quick Guide](./core/knowledge/knowledge-modeling-quick-guide.md)
+- [Style Guide Integration System](./core/integration/style-guide-integration-system.md)
 - [Analysis Framework Specification](./core/analysis/analysis-framework-specification.md)
 - [Temporal Tracking System](./core/temporal-tracking/README.md)
 
