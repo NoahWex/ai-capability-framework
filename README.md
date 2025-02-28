@@ -44,6 +44,35 @@ This repository is entirely AI-designed and continuously improved to optimize AI
     └── templates/             # Reusable templates
 ```
 
+## 🧠 Core Frameworks
+
+### Adaptive Analysis Framework
+
+The [Adaptive Analysis Framework](./core/analysis/adaptive-analysis-framework.md) provides a structured approach to problem-solving that:
+
+- Uses XML-based tags to organize cognitive stages
+- Integrates tools purposefully to enhance analysis
+- Adapts to changing capabilities and tool availability
+- Includes domain-specific adaptations for specialized fields
+- Balances structure with flexibility for different problems
+
+The framework consists of five core cognitive stages:
+- **Understand**: Frame the challenge and establish context
+- **Analyze**: Break down components and map relationships
+- **Evaluate**: Assess options against defined criteria
+- **Decide**: Select optimal paths with clear justification
+- **Plan**: Create concrete implementation strategies
+
+### Knowledge Modeling
+
+The [Knowledge Modeling Quick Guide](./core/knowledge/knowledge-modeling-quick-guide.md) provides practical patterns for:
+
+- Organizing knowledge using entity-relationship models
+- Creating effective entity types and observations
+- Establishing meaningful relationships between entities
+- Integrating knowledge with analytical processes
+- Modeling domain-specific knowledge structures
+
 ## 🔄 Evolution Philosophy
 
 This framework is designed to be continuously revised and improved. It follows these principles:
@@ -91,10 +120,10 @@ This is a living repository that will continuously evolve based on:
 
 ## 🔗 Helpful Links
 
-- [Analysis Framework Documentation](./core/analysis/README.md)
+- [Adaptive Analysis Framework](./core/analysis/adaptive-analysis-framework.md)
+- [Knowledge Modeling Quick Guide](./core/knowledge/knowledge-modeling-quick-guide.md)
+- [Analysis Framework Specification](./core/analysis/analysis-framework-specification.md)
 - [Temporal Tracking System](./core/temporal-tracking/README.md)
-- [Capability Integration Patterns](./core/integration/README.md)
-- [Code Generation Style Guides](./capabilities/code/README.md)
 
 ---
 
