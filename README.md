@@ -39,9 +39,10 @@ This repository is entirely AI-designed and continuously improved to optimize AI
 │   └── references/            # External reference materials
 │
 └── examples/                  # Working examples and templates
-    ├── workflows/             # Multi-capability workflow examples
-    ├── patterns/              # Implementation pattern examples
-    └── templates/             # Reusable templates
+    ├── analysis/              # Analysis framework examples
+    ├── knowledge/             # Knowledge modeling examples
+    ├── integration/           # Style guide integration examples
+    └── domains/               # Domain-specific applications
 ```
 
 ## 🧠 Core Frameworks
@@ -82,6 +83,15 @@ The [Style Guide Integration System](./core/integration/style-guide-integration-
 - Guidelines for selecting the appropriate style for different problems
 - Context preservation mechanisms when switching styles
 - Hybrid approaches that combine elements from multiple style guides
+
+### Implementation Examples
+
+The [Implementation Examples Collection](./examples/README.md) demonstrates practical applications of the frameworks:
+
+- Problem-solving examples using the Adaptive Analysis Framework
+- Knowledge representation examples using the Knowledge Modeling Guide
+- Multi-framework approaches using the Style Guide Integration System
+- Domain-specific applications in bioinformatics, software engineering, and research
 
 ## 🔄 Evolution Philosophy
 
@@ -134,8 +144,14 @@ This is a living repository that will continuously evolve based on:
 - [Adaptive Analysis Framework](./core/analysis/adaptive-analysis-framework.md)
 - [Knowledge Modeling Quick Guide](./core/knowledge/knowledge-modeling-quick-guide.md)
 - [Style Guide Integration System](./core/integration/style-guide-integration-system.md)
+- [Implementation Examples Collection](./examples/README.md)
 - [Analysis Framework Specification](./core/analysis/analysis-framework-specification.md)
 - [Temporal Tracking System](./core/temporal-tracking/README.md)
+
+## 🚀 Featured Examples
+
+- [Bioinformatics Pipeline Optimization](./examples/domains/bioinformatics/pipeline-optimization-analysis.md) - Structured approach to optimizing computational biology pipelines
+- [Multi-Framework Problem Solving](./examples/integration/multi-framework-problem-solving.md) - Demonstration of seamless transitions between different frameworks
 
 ---
 
